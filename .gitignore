@@ -1,0 +1,19 @@
+# Python / Jupyter
+__pycache__/
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Raw and generated large data
+data_raw/
+data_clean/*.csv
+outputs/bi/bi_trip_base_202407.csv
+
+# Power BI binary files are large; keep screenshots/README in Git instead.
+outputs/PowerBI/*.pbix
+outputs/powerbi/*.pbix
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
