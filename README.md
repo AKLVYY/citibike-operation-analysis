@@ -24,8 +24,9 @@
 | Python分析过程 | notebooks/ | 包含数据理解、宽表构建、需求分析、站点失衡分析、用户差异分析和BI数据导出 |
 | SQL复现脚本 | sql/ | 使用MySQL 8.0复现核心业务指标查询 |
 | 核心图表 | outputs/figures/ | README中展示的关键图表和Power BI看板截图 |
-| BI分析数据表 | outputs/bi/ | 面向Power BI的明细表和聚合表 |
-| Power BI看板 | outputs/PowerBI/citibike_dashboard.pbix | 基于BI数据表制作的可视化看板 |
+| BI分析数据表 | outputs/bi/ | 面向Power BI的聚合表已上传，明细表本地生成 |
+| Power BI看板截图 | outputs/figures/06_bi_demand_overview.png 等 | README中展示的Power BI看板页面 |
+| Power BI看板文件 | outputs/PowerBI/citibike_dashboard.pbix | 本地PBIX文件，体积较大，不上传GitHub |
 
 ## 1.项目背景
 
@@ -195,9 +196,9 @@ Top10净流入站点图；
 
 会员与临时用户骑行时长结构图；
 
-用于Power BI进一步分析的outputs/bi目录数据表。
+用于Power BI进一步分析的outputs/bi目录数据表。其中日度、小时、站点失衡、用户类型与车型等聚合表体积较小，适合随仓库保留；bi_trip_base_202407.csv为骑行明细表，约1.4GB，仅本地生成，不上传GitHub。
 
-Power BI看板文件位于outputs/PowerBI/citibike_dashboard.pbix。
+Power BI看板文件本地保存在outputs/PowerBI/citibike_dashboard.pbix。由于该PBIX文件约310MB，不适合直接上传普通GitHub仓库，因此仓库中保留Power BI看板截图和聚合BI数据表，PBIX文件仅在本地复现时使用。
 
 ## 5.核心发现
 
@@ -323,6 +324,8 @@ Power BI
 
 ## 10.项目文件结构
 
+以下为本地完整项目结构。其中data_raw、data_clean、outputs/bi/bi_trip_base_202407.csv和outputs/PowerBI/citibike_dashboard.pbix体积较大，用于本地复现，不直接上传GitHub。
+
 ```text
 citibike-operation-analysis/
 ├── data_raw/
@@ -348,7 +351,7 @@ citibike-operation-analysis/
 │   └── 05__member_casual_behavior.sql
 ├── outputs/
 │   ├── bi/
-│   │   ├── bi_trip_base_202407.csv
+│   │   ├── bi_trip_base_202407.csv       # 本地生成，不上传GitHub
 │   │   ├── bi_daily_demand_202407.csv
 │   │   ├── bi_hourly_demand_202407.csv
 │   │   ├── bi_time_period_member_202407.csv
@@ -356,7 +359,7 @@ citibike-operation-analysis/
 │   │   ├── bi_station_imbalance_202407.csv
 │   │   └── bi_evening_station_imbalance_202407.csv
 │   ├── PowerBI/
-│   │   └── citibike_dashboard.pbix
+│   │   └── citibike_dashboard.pbix       # 本地文件，不上传GitHub
 │   └── figures/
 │       ├── 01_daily_ride_demand_trend.png
 │       ├── 02_hourly_pattern_by_day_type.png
@@ -397,9 +400,9 @@ pip install -r requirements.txt
 
 6.04_station_imbalance_analysis.ipynb会生成data_clean/station_imbalance_202407.csv和data_clean/evening_station_imbalance_202407.csv，用于站点失衡分析。
 
-7.06_export_bi_data.ipynb会生成outputs/figures目录下的核心图表，以及outputs/bi目录下的Power BI分析数据表。
+7.06_export_bi_data.ipynb会生成outputs/figures目录下的核心图表，以及outputs/bi目录下的Power BI分析数据表。聚合BI表体积较小，可随仓库保留；bi_trip_base_202407.csv为明细表，体积较大，不上传GitHub。
 
-8.Power BI看板文件保存在outputs/PowerBI/citibike_dashboard.pbix。该文件使用outputs/bi目录下的数据表作为BI分析数据源。
+8.Power BI看板文件本地保存在outputs/PowerBI/citibike_dashboard.pbix。该文件约310MB，不上传GitHub；仓库中保留outputs/figures目录下的Power BI看板截图，用于展示最终效果。
 
 ## 12.SQL分析说明
 
